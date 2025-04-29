@@ -1,0 +1,41 @@
+﻿@model Parcial1Prog3.Models.Competidor
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Registro de Competidores</h1>
+
+@if (ViewBag.Error != null)
+{
+    <p style="color: red;">@ViewBag.Error</p>
+}
+
+<form asp-action="Create">
+    <label>Nombre: </label><br />
+    <input type="text" name="Nombre" value="@Model?.Nombre" /><br />
+    <span asp-validation-for="Nombre" style="color:red"></span><br /><br />
+
+    <label>Disciplina: </label><br />
+    <select name="IdDisciplina">
+        <option value="">Seleccione una opción</option>
+        @foreach (var item in ViewBag.Disciplina)
+        {
+            <option value="@item.Id">@item.Nombre</option>
+        }
+    </select><br />
+    <span asp-validation-for="IdDisciplina" style="color:red"></span><br /><br />
+
+    <label>Edad: </label><br />
+    <input type="number" name="Edad" value="@Model?.Edad" min="0" /><br />
+    <span asp-validation-for="Edad" style="color:red"></span><br /><br />
+
+    <label>Ciudad de residencia: </label><br />
+    <input type="text" name="Ciudad" value="@Model?.Ciudad" /><br />
+    <span asp-validation-for="Ciudad" style="color:red"></span><br /><br />
+
+    <button type="submit">Registrar competidor</button>
+</form>
+
+<br />
+<a href="/Competidor/Index">Volver al listado</a>
