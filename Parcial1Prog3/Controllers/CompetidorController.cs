@@ -23,13 +23,18 @@ namespace Parcial1Prog3.Controllers
         {
             try
             {
-                if (!ModelState.IsValid) { return View(); }
+                if (!ModelState.IsValid) 
+                {
+                    ViewBag.Disciplina = _BD.ListarDisciplina();
+                    return View(competidor); 
+                }
 
                 ViewBag.Error = _BD.CrearCompetidor(competidor);
 
                 if(ViewBag.Error != "") 
-                { 
-                    return View(); 
+                {
+                    ViewBag.Disciplina = _BD.ListarDisciplina();
+                    return View(competidor); 
                 }
                 else 
                 { 
@@ -37,7 +42,11 @@ namespace Parcial1Prog3.Controllers
                 }
 
             }
-            catch { return View(); }
+            catch 
+            {
+                ViewBag.Disciplina = _BD.ListarDisciplina();
+                return View(competidor); 
+            }
         }
     }
 }

@@ -25,7 +25,6 @@ namespace Parcial1Prog3.Datos
                         Nombre = reader["NombreCompetidor"].ToString(),
                         Edad = (int)reader["Edad"],
                         Ciudad = reader["Ciudad"].ToString(),
-                        IdDisciplina= (int)reader["IdDisciplina"],
                         Disciplina = new Disciplina()
                         {
                             Id = (int)reader["IdDisciplina"],
